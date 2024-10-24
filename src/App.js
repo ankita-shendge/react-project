@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Split from "react-split";
+import { getTokenFromUrl } from "./components/Authentication/sportify";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Main from "./components/Main/Main";
+import Login from "./components/Authentication/Login";
+import Rightbar from "./components/Right/Rightbar";
+import { TrackProvider } from "./components/TrackContext";
 
 function App() {
+  const [token, setToken] = useState(
+    () => window.localStorage.getItem("access_token") || ""
+  );
+
+  useEffect(() => {
+    const hash = getTokenFromUrl();
+    window.location.hash = "";
+    const _token = hash.access_token;
+
+    if (_token) {
+      setToken(_token);
+      window.localStorage.setItem("access_token", _token);
+    }
+  }, [token]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {token ? (
+        <TrackProvider>
+          <Split
+            sizes={[25, 50, 25]}
+            minSize={50}
+            expandToMin={true}
+            gutterSize={8}
+            gutterAlign="center"
+            snapOffset={20}
+            dragInterval={1}
+            direction="horizontal"
+            cursor="col-resize"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            <Sidebar />
+            <Main />
+            <Rightbar />
+          </Split>
+        </TrackProvider>
+      ) : (
+        <Login />
+      )}
+    </>
   );
 }
 

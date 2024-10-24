@@ -1,5 +1,5 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
-export const redirectUri = "https://your-app-name.vercel.app/"; // Vercel URL
+export const redirectUri = "https://sportify-clone.vercel.app/"; // Vercel URL
 const clientId = "65f331ac024346659850288cc526fb16";
 
 const scopes = [

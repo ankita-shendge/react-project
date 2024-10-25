@@ -2,6 +2,7 @@ export const authEndpoint = "https://accounts.spotify.com/authorize";
 export const redirectUri =
   "https://react-project-ankita-shendges-projects.vercel.app/";
 // export const redirectUri = "http://localhost:3000/";
+//changed
 const clientId = "65f331ac024346659850288cc526fb16";
 
 const scopes = [

@@ -1,5 +1,5 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
-export const redirectUri = "https://sportify-clone.vercel.app/"; // Vercel URL
+export const redirectUri = "https://ankitashendge.vercel.app/";
 const clientId = "65f331ac024346659850288cc526fb16";
 
 const scopes = [
@@ -10,7 +10,7 @@ const scopes = [
   "user-modify-playback-state",
 ];
 
-// https://your-app-name.vercel.app/#access_token=BQD3WNFGIaH07FkoYk_dHMRs_n_Gzc-vJbKfeNKvyxq12TbbT-yMgNqLV1ldTYGjPU46Ekq-rGJSymbyQrpXZwz67TfjkD3qFLvrHa0d0UzT2vUyRKzz1Yf1yOLKwAAhBXoXEtmYYO3Z5V5rRJJyx28IHqOCU9n1sE9ImCwjjfkteful2MlBSfzitpGYw7dCJdBQRhitqIyjrnAFhu4M&token_type=Bearer&expires_in=3600
+// http://localhost:3000/#access_token=BQD3WNFGIaH07FkoYk_dHMRs_n_Gzc-vJbKfeNKvyxq12TbbT-yMgNqLV1ldTYGjPU46Ekq-rGJSymbyQrpXZwz67TfjkD3qFLvrHa0d0UzT2vUyRKzz1Yf1yOLKwAAhBXoXEtmYYO3Z5V5rRJJyx28IHqOCU9n1sE9ImCwjjfkteful2MlBSfzitpGYw7dCJdBQRhitqIyjrnAFhu4M&token_type=Bearer&expires_in=3600
 
 export const getTokenFromUrl = () => {
   return window.location.hash

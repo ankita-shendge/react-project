@@ -14,14 +14,34 @@ function App() {
 
   useEffect(() => {
     const hash = getTokenFromUrl();
-    window.location.hash = "";
     const _token = hash.access_token;
 
     if (_token) {
       setToken(_token);
       window.localStorage.setItem("access_token", _token);
+
+      fetch("https://api.spotify.com/v1/me/player/devices", {
+        headers: {
+          Authorization: `Bearer ${_token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.devices && data.devices.length > 0) {
+            const deviceId = data.devices[0].id;
+            window.localStorage.setItem("spotify_device_id", deviceId);
+            console.log("Device ID stored:", deviceId);
+          } else {
+            console.log("No active devices found.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching devices:", error);
+        });
+
+      window.location.hash = "";
     }
-  }, [token]);
+  }, []);
 
   return (
     <>

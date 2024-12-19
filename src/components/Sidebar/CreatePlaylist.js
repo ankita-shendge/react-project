@@ -6,7 +6,7 @@ function CreatePlaylist({ first_p, second_p, button_name, onClick }) {
   };
   return (
     <>
-      <div className="bg-dark rounded-2 ms-2 me-2 mt-2 align-items-center first_playlist">
+      <div className="bg-dark rounded-2 ms-2 me-2 mt-2 align-items-center first_playlist fs-6 p-3">
         <p>{first_p}</p>
         <p>{second_p}</p>
         <button

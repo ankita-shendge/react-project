@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import BrowseAll from "./BrowseAll";
 import Navbar from "./Navbar";
 
@@ -17,9 +16,9 @@ export default Main;
 
 const MainComponent = styled.div`
   color: white;
-  height: 100%; /* Full page height */
+  height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column; /* Column layout to stack Navbar and BrowseAll */
+  flex-direction: column; 
   overflow: hidden;
 `;

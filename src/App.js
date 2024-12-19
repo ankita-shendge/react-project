@@ -48,20 +48,29 @@ function App() {
       {token ? (
         <TrackProvider>
           <Split
-            sizes={[25, 50, 25]}
+            sizes={[85, 15]}
+            direction="vertical"
             minSize={50}
-            expandToMin={true}
             gutterSize={8}
             gutterAlign="center"
-            snapOffset={20}
-            dragInterval={1}
-            direction="horizontal"
-            cursor="col-resize"
-            style={{ display: "flex", flexDirection: "row" }}
+            style={{ display: "flex", flexDirection: "column", height: "100vh" }}
           >
-            <Sidebar />
-            <Main />
-            <Rightbar />
+            {/* Horizontal Split for Sidebar and Main */}
+            <Split
+              sizes={[25, 75]}
+              direction="horizontal"
+              minSize={50}
+              gutterSize={8}
+              gutterAlign="center"
+              style={{ display: "flex", flexDirection: "row", flexGrow: 1 }}
+            >
+              <Sidebar />
+              <Main />
+            </Split>
+            {/* Rightbar at the bottom */}
+            <div style={{ flexGrow: 0 }}>
+              <Rightbar />
+            </div>
           </Split>
         </TrackProvider>
       ) : (

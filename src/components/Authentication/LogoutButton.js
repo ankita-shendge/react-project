@@ -10,7 +10,7 @@ function logoutFunctionality() {
 function Logout() {
   return (
     <LogoutButton>
-      <button onClick={logoutFunctionality}>Logout</button>
+      <button className="bg-dark border-0 text-white" onClick={logoutFunctionality}>Logout</button>
     </LogoutButton>
   );
 }
@@ -18,10 +18,5 @@ function Logout() {
 export default Logout;
 
 const LogoutButton = styled.div`
-  button {
-    width: 100px;
-    color: black;
-    padding: 5px 5px;
-    border-radius: 20px;
-  }
+ 
 `;

@@ -1,17 +1,25 @@
 import React, { useState } from "react";
-import { FaRegPlayCircle, FaPauseCircle } from "react-icons/fa";
+
+import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
+import { BiSkipPrevious, BiSkipNext } from "react-icons/bi";
+import { IoIosShuffle } from "react-icons/io";
+import { TbRepeat } from "react-icons/tb";
+import { MdOutlineLyrics, MdOutlineCastConnected } from "react-icons/md";
+import { PiQueueDuotone } from "react-icons/pi";
+import { IoIosVolumeHigh } from "react-icons/io";
+import { MdOutlineFullscreen } from "react-icons/md";
+
+
 
 const TrackDetails = ({ track }) => {
-  const [isPlaying, setIsPlaying] = useState(false); // State to track playback status
+  const [isPlaying, setIsPlaying] = useState(false);
   const token = window.localStorage.getItem("access_token");
   const deviceId = window.localStorage.getItem("spotify_device_id");
 
-  // Ensure track is not empty
   if (!track || Object.keys(track).length === 0) {
     return null;
   }
 
-  // Function to handle song playback
   const handlePlayPause = async (trackUri) => {
     if (!deviceId) {
       console.error("Device ID is not available.");
@@ -55,40 +63,57 @@ const TrackDetails = ({ track }) => {
   };
 
   return (
-    <div className="card rounded bg-dark text-light" style={{ width: "18rem" }}>
-      <div className="card-body text-center">
+<div className="bg-dark text-light py-3">
+  <div className="container-fluid">
+    <div className="row align-items-center text-center">
+      {/* <!-- Album Art and Track Info --> */}
+      <div className="col-4 d-flex align-items-center">
         {track.album?.images?.length > 0 && (
           <img
             src={track.album.images[0].url}
             alt={track.album.name}
-            className="img-fluid mt-4 rounded"
-            style={{ width: "100%", maxWidth: "400px" }}
+            className="img-fluid rounded"
+            style={{ width: "60px", height: "60px" }}
           />
         )}
+        <div className="ms-3">
+          <p className="mb-0 fw-bold">{track.name}</p>
+          {track.artists && track.artists.length > 0 && (
+            <p className="mb-0 text-white">{track.artists[0].name}</p>
+          )}
+        </div>
+      </div>
 
-        <h5 className="card-title pt-4">{track.name}</h5>
-
-        {track.artists && track.artists.length > 0 && (
-          <p className="card-text p-2 m-0">Artist: {track.artists[0].name}</p>
-        )}
-
-        {track.album && (
-          <p className="card-text p-0">Album: {track.album.name}</p>
-        )}
-
-        {/* Play/Pause button */}
+      {/* <!-- Playback Controls --> */}
+      <div className="col-4 d-flex justify-content-center align-items-center">
+        <IoIosShuffle className="fs-4 me-3 text-white" />
+        <BiSkipPrevious className="fs-4 me-3 text-white" />
         <button
-          className="bg-transparent text-light border-0"
-          onClick={() => handlePlayPause(track.uri)} // Call handlePlayPause
+          className="bg-transparent text-light border-0 p-0"
+          onClick={() => handlePlayPause(track.uri)}
         >
           {isPlaying ? (
-            <FaPauseCircle className="fs-1 p-0" />
+            <FaPauseCircle className="fs-2 text-light" />
           ) : (
-            <FaRegPlayCircle className="fs-1 p-0" />
+            <FaPlayCircle className="fs-2 text-light" />
           )}
         </button>
+        <BiSkipNext className="fs-4 ms-3 me-3 text-white" />
+        <TbRepeat className="fs-5 text-white" />
+      </div>
+
+      {/* <!-- Additional Controls --> */}
+      <div className="col-4 d-flex justify-content-end align-items-center ">
+        <MdOutlineLyrics className="fs-4 me-3 text-white" />
+        <PiQueueDuotone className="fs-4 me-3 text-white" />
+        <MdOutlineCastConnected className="fs-4 me-3 text-white" />
+        <IoIosVolumeHigh className="fs-4 me-3 text-white" />
+        <MdOutlineFullscreen className="fs-4 text-white" />
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 

@@ -25,12 +25,12 @@ const SidebarLibrary = () => {
   return (
     <>
       <div>
-        <div className="bg-dark rounded-2 ms-2 me-2 p-1 d-flex justify-content-between">
+        <div className="bg-dark rounded-2 ms-2 me-2 p-1 d-flex justify-content-between ">
           <button
             type="button"
             className="btn btn-dark d-flex justify-content-start fw-lighter solid_button align-items-center"
           >
-            <i className="bi bi-music-note-list fs-5 pe-2"></i>
+            <i className="bi bi-music-note-list fs-6"></i>
             <span className="link-light text-decoration-none library-link">
               Your Library
             </span>

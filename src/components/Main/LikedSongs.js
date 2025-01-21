@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { TrackContext } from "../TrackContext";
 import { useContext } from "react";
+import { redirectUri } from "../Authentication/sportify";
 
 function LikedSongs() {
   const token = window.localStorage.getItem("access_token");
@@ -36,8 +37,12 @@ function LikedSongs() {
         console.error("Error fetching data:", error);
       }
     }
-
-    fetchLikedTracks();
+if (token) {
+  fetchLikedTracks();
+    }else{
+      window.location.href = redirectUri;
+    }
+ 
   }, [token]); // Add dependency array to run only when `token` changes
 
   return (

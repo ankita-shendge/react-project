@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { FaRegPlayCircle } from "react-icons/fa";
 import { TrackContext } from "../TrackContext";
+import { redirectUri } from "../Authentication/sportify";
 
 function AudioBookList() {
   const token = window.localStorage.getItem("access_token");
@@ -41,7 +42,9 @@ function AudioBookList() {
 
     if (token) {
       fetchAudioBooksData();
-    }
+    }else{
+           window.location.href = redirectUri;
+         }
   }, [token]);
 
   const fetchAudioChapters = async (audioBookId, audioBookName) => {

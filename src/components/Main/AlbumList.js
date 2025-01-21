@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaRegPlayCircle } from "react-icons/fa";
 
 import { TrackContext } from "../TrackContext";
+import { redirectUri } from "../Authentication/sportify";
 
 function AlbumList() {
   const [albumList, setAlbumList] = useState([]);
@@ -15,7 +16,8 @@ function AlbumList() {
   useEffect(() => {
     async function fetchAlbumListData() {
       if (!token) {
-        console.error("No token found");
+         console.error("No token found"); 
+        // window.location.href = redirectUri;
         return;
       }
 
@@ -38,11 +40,14 @@ function AlbumList() {
         setAlbumList(data.albums.items);
       } catch (error) {
         console.error("Error fetching data:", error);
+        
       }
     }
 
     if (token) {
       fetchAlbumListData();
+    }else{
+      window.location.href = redirectUri;
     }
   }, [token]);
 
@@ -57,14 +62,14 @@ function AlbumList() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch Album Tracks");
-      }
+    
+
       const data = await response.json();
       setAlbumTracks(data.items);
       setSelectedAlbum(albumName);
     } catch (error) {
       console.log("error fectching albumList", error);
+
     }
   };
 

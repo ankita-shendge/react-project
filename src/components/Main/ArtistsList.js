@@ -3,6 +3,7 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import "./BrowseAll.css";
 
 import { TrackContext } from "../TrackContext";
+import { redirectUri } from "../Authentication/sportify";
 
 function ArtistsList() {
   const token = window.localStorage.getItem("access_token");
@@ -38,7 +39,11 @@ function ArtistsList() {
       }
     };
 
-    fetchArtists();
+  if (token) {
+       fetchArtists();
+     }else{
+       window.location.href = redirectUri;
+     }
   }, [token]);
 
   // Function to fetch top tracks for the selected artist

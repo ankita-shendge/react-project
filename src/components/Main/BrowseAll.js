@@ -13,7 +13,7 @@ function BrowseAll() {
         <li className="pe-2">
           <NavLink
             className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded"
-            to="/likedsongs"
+            to="/"
           >
             LikedSongs
           </NavLink>
@@ -45,7 +45,7 @@ function BrowseAll() {
         </li>
       </ul>
       <Routes>
-        <Route path="/likedsongs" element={<LikedSongs />} />
+        <Route path="/" element={<LikedSongs />} />
         <Route path="/artists" element={<ArtistsList />} />
         <Route path="/albums" element={<AlbumList />} />
         <Route path="/audiobooks" element={<AudioBookList />} />

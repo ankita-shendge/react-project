@@ -48,14 +48,15 @@ const TrackDetails = ({ track }) => {
             }
           );
 
+
       if (response.status === 204 || response.status === 200) {
         setIsPlaying(!isPlaying); // Toggle the playback state
         console.log(
           `${isPlaying ? "Playback paused" : "Playback started"} successfully.`,
           track.album.name
         );
-      } else {
-        console.error("Playback failed.", response);
+      } else if(response.status === 403) {
+        window.alert("You need a Spotify Premium subscription to play this song." , response);
       }
     } catch (error) {
       console.error("Error playing/pausing track:", error);

@@ -6,13 +6,14 @@ import AlbumList from "./AlbumList";
 import AudioBookList from "./AudioBookList";
 import LikedSongs from "./LikedSongs";
 
+
 function BrowseAll() {
   return (
     <BrowserRouter>
       <ul className="mt-3 d-flex list-unstyled pt-2 align-items-center flex-wrrap">
         <li className="pe-2">
           <NavLink
-            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded"
+            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded-5"
             to="/"
           >
             LikedSongs
@@ -20,7 +21,7 @@ function BrowseAll() {
         </li>
         <li className="pe-2">
           <NavLink
-            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded"
+            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded-5"
             to="/artists"
           >
             Artists
@@ -28,7 +29,7 @@ function BrowseAll() {
         </li>
         <li className="pe-2">
           <NavLink
-            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded"
+            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded-5"
             to="/albums"
           >
             Albums
@@ -37,7 +38,7 @@ function BrowseAll() {
 
         <li className="pe-2">
           <NavLink
-            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded"
+            className="text-decoration-none bg-dark bg-gradient p-3 text-light rounded-5"
             to="/audiobooks"
           >
             Audiobooks
@@ -49,6 +50,7 @@ function BrowseAll() {
         <Route path="/artists" element={<ArtistsList />} />
         <Route path="/albums" element={<AlbumList />} />
         <Route path="/audiobooks" element={<AudioBookList />} />
+        {/* <Route path="/displayTracks" element={<DisplayArtistsTracks />} /> */}
       </Routes>
     </BrowserRouter>
   );

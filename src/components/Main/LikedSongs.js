@@ -37,32 +37,36 @@ function LikedSongs() {
         console.error("Error fetching data:", error);
       }
     }
-if (token) {
-  fetchLikedTracks();
-    }else{
+    if (token) {
+      fetchLikedTracks();
+    } else {
       window.location.href = redirectUri;
     }
- 
   }, [token]); // Add dependency array to run only when `token` changes
 
   return (
-    <div className="mt-4 p-3 bg-dark rounded">
+    <div className=" mt-2 p-3 bg-dark rounded">
       <div className="rounded-3 navbar_before p-2">
-        <h1 className="fs-5 m-2">Liked Songs</h1>
+        <h1 className="fs-1 m-2">Liked Songs</h1>
         {likedTracks.length > 0 ? (
-          <ul className="list-group">
-            {likedTracks.map((track) => (
-              <li
-                key={track.id}
-                className="list-group-item bg-dark bg-gradient text-light border-0 d-flex justify-content-between align-items-center p-3  "
-              >
-                <span className="ms-2">{track.name}</span>
-                <div onClick={() => setCurrentTrack(track)}>
-                  <FaRegPlayCircle className="fs-4 fw-light" />
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div
+            className="overflow-auto rounded"
+            style={{ maxHeight: "53vh" }} // Ensures scrolling works
+          >
+            <ul className="list-group rounded h-75">
+              {likedTracks.map((track) => (
+                <li
+                  key={track.id}
+                  className="list-group-item bg-dark bg-gradient text-light border-0 d-flex justify-content-between align-items-center p-3"
+                >
+                  <span className="ms-2">{track.name}</span>
+                  <div onClick={() => setCurrentTrack(track)}>
+                    <FaRegPlayCircle className="fs-4 fw-light" />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : (
           <p>No top tracks available.</p>
         )}
